@@ -1,0 +1,53 @@
+@import "../../static/styles/index";
+
+.articleItem {
+  @extend .col-lg-3;
+  @extend .col-md-4;
+  @extend .col-sm-6;
+  position: relative;
+  text-decoration: none;
+  text-align: center;
+  flex-direction: column;
+  display: flex;
+  margin-bottom: $spaceLarge;
+
+  &__image {
+    width: 100%;
+    display: block;
+  }
+
+  &__price {
+    @include fontSet($fontMiddle);
+    font-weight: bold;
+    text-align: center;
+    color: $textColor;
+  }
+
+  &__brand {
+    @include fontSet($fontSmall);
+    margin: $spaceSmall 0;
+    color: $lightText;
+  }
+
+  &__name {
+    @include fontSet($fontMiddle);
+    color: $textColor;
+    margin-bottom: $spaceMiddle;
+  }
+
+  &__size {
+    @include position(absolute, $spaceMiddle, $left: $spaceLarge);
+    @include dimensions(40px);
+    @include fontSet($fontSmall);
+    @include centerContent;
+    color: $white;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: $brandColor;
+  }
+
+  &:hover {
+    box-shadow: 0 0 17px 0 rgba($brandColor,0.43);
+    transition: box-shadow 200ms;
+  }
+}

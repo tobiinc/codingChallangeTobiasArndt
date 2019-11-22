@@ -1,0 +1,3 @@
+export const ARTICLE = 'ARTICLE';
+export const ARTICLE_FILTER = 'ARTICLE_FILTER';
+export const ARTICLE_CATALOG = 'ARTICLE_CATALOG';

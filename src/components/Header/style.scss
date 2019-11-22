@@ -1,0 +1,11 @@
+@import "../../static/styles/index";
+
+.header {
+  @extend .container;
+  @include centerContent;
+  margin: $spaceLarge 0;
+
+  &__logo {
+    width: 50%;
+  }
+}
