@@ -1,19 +1,19 @@
 # README
 
-##Dependencies
+#Dependencies
 
 [NODE](https://nodejs.org/en/)<br/>
 [NPM](https://kitematic.com/)<br/>
 
-## Getting Started
+# Getting Started
 
-####Compile Frontend
+Compile Frontend
 Run `npm install`
 
-####Start local Frontend
+Start local Frontend
 RUN `npm start` and go to [http://localhost:8080](http://localhost:8080)
 
 
-####Compiled Frontend
+Compiled Frontend
 Run `npm build`
-GO TO `build/index.html`
+open `build/index.html` in Browser
