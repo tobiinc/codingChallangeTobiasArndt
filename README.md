@@ -8,7 +8,7 @@
 # Getting Started
 
 Compile Frontend:
-Run `npm install`
+RUN `npm install`
 
 Start local Frontend:
 RUN `npm start` and go to [http://localhost:8080](http://localhost:8080)
