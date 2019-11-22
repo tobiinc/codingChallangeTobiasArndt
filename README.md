@@ -1,11 +1,11 @@
 # README
 
-#Dependencies
+### Dependencies
 
 [NODE](https://nodejs.org/en/)<br/>
 [NPM](https://kitematic.com/)<br/>
 
-# Getting Started
+### Getting Started
 
 Compile Frontend:
 RUN `npm install`
