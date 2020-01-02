@@ -2,9 +2,6 @@
 
 .catalog {
   @extend .container;
-  &__nav {
-    @extend .row;
-  }
   &__wrapper {
     @extend .row;
   }

@@ -77,7 +77,6 @@ startRekitStudio(studioPort).then(() =>
       // Create a webpack compiler that is configured with custom messages.
       const compiler = createCompiler(webpack, config, appName, urls, useYarn);
       compiler.plugin('done', stats => {
-        console.log(chalk.bold(`To use Rekit Studio, access: http://localhost:${studioPort}`));
         console.log();
       });
       // Load proxy config

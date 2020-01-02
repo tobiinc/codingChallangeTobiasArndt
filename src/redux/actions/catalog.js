@@ -1,8 +1,11 @@
-// Rekit uses a new approach to organizing actions and reducers. That is
-// putting related actions and reducers in one file. See more at:
-// https://medium.com/@nate_wang/a-new-approach-for-managing-redux-actions-91c26ce8b5da
-
-import { ARTICLE, ARTICLE_FILTER, ARTICLE_CATALOG } from '../constants';
+import {
+    ARTICLE,
+    ARTICLE_CATALOG,
+    AVAILABLE_SIZES,
+    AVAILABLE_COLORS,
+    AVAILABLE_MIN_PRICE,
+    AVAILABLE_MAX_PRICE
+} from '../constants';
 
 export function getArticle(payload) {
     return {
@@ -11,16 +14,37 @@ export function getArticle(payload) {
     };
 }
 
-export function filterArticle(payload) {
+export function storeCatalogArticle(payload) {
     return {
-        type: ARTICLE_FILTER,
+        type: ARTICLE_CATALOG,
         payload
     };
 }
 
-export function catalogArticle(payload) {
+export function availableSizes(payload) {
     return {
-        type: ARTICLE_CATALOG,
+        type: AVAILABLE_SIZES,
+        payload
+    };
+}
+
+export function availableColors(payload) {
+    return {
+        type: AVAILABLE_COLORS,
+        payload
+    };
+}
+
+export function availableMinPrice(payload) {
+    return {
+        type: AVAILABLE_MIN_PRICE,
+        payload
+    };
+}
+
+export function availableMaxPrice(payload) {
+    return {
+        type: AVAILABLE_MAX_PRICE,
         payload
     };
 }
@@ -33,16 +57,38 @@ export function reducer(state, action) {
                 articles: [...action.payload],
                 isPending: true
             };
-        case ARTICLE_FILTER:
-            console.log('payload', action.payload);
-            return {
-                ...state,
-                articleOrder: action.payload
-            };
         case ARTICLE_CATALOG:
             return {
                 ...state,
                 articleCatalog: action.payload
+            };
+        case AVAILABLE_SIZES:
+            return {
+                ...state,
+                availableSizes: action.payload
+            };
+        case AVAILABLE_COLORS:
+            return {
+                ...state,
+                availableColors: action.payload
+            };
+        case AVAILABLE_MIN_PRICE:
+            return {
+                ...state,
+                availablePrice: {
+                    ...state.availablePrice,
+                    min: action.payload
+
+                }
+            };
+        case AVAILABLE_MAX_PRICE:
+            return {
+                ...state,
+                availablePrice: {
+                    ...state.availablePrice,
+                    max: action.payload
+
+                }
             };
         default:
             return state;

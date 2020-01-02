@@ -4,7 +4,7 @@
   line-height: $line-height;
 }
 
-@mixin position ($position, $top: null, $left: null, $bottom: null, $right: null) {
+@mixin position ($position, $top: null, $right: null, $bottom: null, $left: null) {
   position: $position;
   top: $top;
   left: $left;

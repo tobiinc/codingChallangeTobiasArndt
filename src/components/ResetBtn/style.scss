@@ -1,0 +1,13 @@
+@import "../../static/styles/index";
+
+.resetBtn {
+  @include dimensions(21px);
+  cursor: pointer;
+  margin: 0 $spaceSmall $spaceSmall 0;
+  fill: $button;
+  &:hover {
+    svg {
+      fill: $buttonHover;
+    }
+  }
+}

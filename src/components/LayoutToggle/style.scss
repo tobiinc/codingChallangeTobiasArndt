@@ -1,0 +1,27 @@
+@import "../../static/styles/index";
+
+.layoutToggle {
+  margin: $spaceMiddle 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  &__button {
+    @include dimensions(20px);
+    fill: $layoutButton;
+    &:first-child {
+      margin-right: $spaceSmall;
+    }
+    &:hover {
+      cursor: pointer;
+      fill: $layoutButtonHover;
+    }
+    &--active{
+      fill: $layoutButtonActive;
+    }
+    &--active:hover {
+      fill: $layoutButtonActive;
+      cursor: default;
+    }
+  }
+}

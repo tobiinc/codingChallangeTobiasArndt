@@ -1,20 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import FilterWrapper from '../FilterWrapper'
+import FilterNav from '../FilterNav'
+import LayoutToggle from '../LayoutToggle'
 import './style.scss';
 
-export default
-class CatalogNav extends Component {
+export default class CatalogNav extends Component {
     static propTypes = {
-        actions: PropTypes.object.isRequired
+        actions: PropTypes.object.isRequired,
+        catalogLayout: PropTypes.string.isRequired
     };
 
     render() {
+
+        const {
+            catalogLayout,
+            actions: {
+                setCatalogLayout
+                }
+            } = this.props;
+
         return (
             <div className="catalogNav">
-                <select onChange={e => this.props.actions(e.target.value)}>
-                    <option value="default">bitte wählen</option>
-                    <option value="price">Preis</option>
-                </select>
+                <FilterWrapper/>
+                <LayoutToggle setCatalogLayout={setCatalogLayout} catalogLayout={catalogLayout}/>
+                <FilterNav/>
             </div>
         )
     }

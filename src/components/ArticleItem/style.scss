@@ -1,32 +1,86 @@
 @import "../../static/styles/index";
 
 .articleItem {
-  @extend .col-lg-3;
-  @extend .col-md-4;
-  @extend .col-sm-6;
   position: relative;
   text-decoration: none;
-  text-align: center;
   flex-direction: column;
   display: flex;
-  margin-bottom: $spaceLarge;
+  padding-bottom: $spaceMiddle;
+
+  &--tile {
+    @extend .col-lg-3;
+    @extend .col-md-4;
+    @extend .col-sm-6;
+    transition: all 0.5s ease;
+    text-align: center;
+    margin-bottom: $spaceLarge;
+  }
+
+  &--list {
+    padding: $spaceMiddle 0;
+    align-items: start;
+    flex-direction: row;
+  }
 
   &__image {
-    width: 100%;
     display: block;
+    &--tile {
+      width: 100%;
+      margin: $spaceMiddle 0;
+    }
+    &--list {
+      @extend .col-md-3;
+      @extend .col-5;
+    }
+  }
+
+  &__headline {
+    margin: $spaceMiddle 0 $spaceSmall;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    &Item {
+      background-color: $buttonActive;
+      padding: $spaceSmall $spaceMiddle;
+      margin: 0 1px $spaceSmall;
+      border-radius: 20px;
+    }
+    &--tile {
+      justify-content: center;
+    }
+  }
+
+  &__props {
+    &--list {
+      @extend .col-md-9;
+      @extend .col-7;
+    }
   }
 
   &__price {
+    @include position(absolute, $spaceMiddle,  $spaceMiddle);
     @include fontSet($fontMiddle);
+    @include centerContent();
     font-weight: bold;
     text-align: center;
     color: $textColor;
+    background-color: $priceBubble;
+    &--tile {
+      @include dimensions(75px);
+      border-radius: 50%;
+    }
+    &--list {
+      padding: $spaceSmall $spaceMiddle;
+      border-radius: 20px;
+      top: 0;
+    }
   }
 
   &__brand {
     @include fontSet($fontSmall);
     margin: $spaceSmall 0;
-    color: $lightText;
   }
 
   &__name {
@@ -35,19 +89,12 @@
     margin-bottom: $spaceMiddle;
   }
 
-  &__size {
-    @include position(absolute, $spaceMiddle, $left: $spaceLarge);
-    @include dimensions(40px);
-    @include fontSet($fontSmall);
-    @include centerContent;
-    color: $white;
-    font-weight: bold;
-    border-radius: 50%;
-    background-color: $brandColor;
+  &__infoText {
+    margin-top: $spaceMiddle;
   }
 
   &:hover {
-    box-shadow: 0 0 17px 0 rgba($brandColor,0.43);
+    box-shadow: 0 0 17px 0 rgba($shadow,0.43);
     transition: box-shadow 200ms;
   }
 }

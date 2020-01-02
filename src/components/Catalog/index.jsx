@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actions from '../../redux/actions';
+import { getKey, flatten } from '../../common/helper';
 import formData from './data';
 import ArticleItem from '../ArticleItem/';
-import Header from '../Header/';
 import CatalogNav from '../CatalogNav/';
 import './style.scss';
 
@@ -14,55 +14,78 @@ export class Catalog extends Component {
         actions: PropTypes.object.isRequired
     };
 
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            catalog: null
-        };
-    }
-
     componentDidMount() {
-        const { actions: { getArticle, catalogArticle } } = this.props;
+        const {
+            actions: {
+                getArticle,
+                storeCatalogArticle,
+                availableSizes,
+                availableColors,
+                availableMaxPrice,
+                availableMinPrice,
+                minPriceFilter,
+                maxPriceFilter
+                },
+            } = this.props;
         const catalogData = formData.getData();
         getArticle(catalogData);
-        catalogArticle(catalogData);
-    }
+        storeCatalogArticle(catalogData);
 
-    componentWillReceiveProps(nextProps) {
-        const {
-            data: { articles, articleOrder, articleCatalog, isPending },
-            actions: { catalogArticle },
-            } = this.props;
+        let getSizes = [catalogData.map((item) => item.sizes.map((size) => size))];
+        getSizes = flatten(getSizes);
+        getSizes = Array.from(getSizes);
+        getSizes = getSizes.filter((item, pos) => {
+            return getSizes.indexOf(item) === pos;
+        });
+        availableSizes(getSizes);
 
-        console.log('isPending', isPending);
-        console.log('articleOrder', articleOrder);
-        console.log('articleCatalog new', nextProps.data.articleOrder);
-        if (nextProps.data.articleOrder !== articleOrder) {
-            if (nextProps.data.articleOrder === 'price') {
-                catalogArticle(articleCatalog.sort((a, b) => a.price - b.price));
-            }
-            if (nextProps.data.articleOrder === 'default') {
-                catalogArticle(articles);
-            }
-        }
+        let getColors = [catalogData.map((item) => item.colors.map((size) => size))];
+        getColors = flatten(getColors);
+        getColors = Array.from(getColors);
+        getColors = getColors.filter((item, pos) => {
+            return getColors.indexOf(item) === pos;
+        });
+        availableColors(getColors);
+
+        let getPrice = catalogData.map((item) => item.price);
+        getPrice = getPrice.filter((item, pos) => {
+            return getPrice.indexOf(item) === pos;
+        });
+        getPrice = getPrice.map((item) => {
+            return parseInt(item, 10);
+        });
+
+        availableMaxPrice(Math.max(...getPrice));
+        availableMinPrice(Math.min(...getPrice));
+        maxPriceFilter(Math.max(...getPrice));
+        minPriceFilter(Math.min(...getPrice));
     }
 
     render() {
         const {
             data: {
                 articleCatalog,
-                isPending
+                isPending,
+                catalogLayout,
+                filter
                 },
             } = this.props;
 
         return (
-            <div className="catalog">
-                <Header/>
-                <CatalogNav actions={this.props.actions.filterArticle}/>
+            <div className={`catalog catalog--${catalogLayout}`}>
+                <CatalogNav
+                    actions={this.props.actions}
+                    catalogLayout={catalogLayout}
+                    />
+
                 <div className="catalog__wrapper">
                     {isPending && articleCatalog.map((item) => (
-                        <ArticleItem item={item} />
+                        <ArticleItem
+                            filter={filter}
+                            key={getKey()}
+                            item={item}
+                            catalogLayout={catalogLayout}
+                            />
                     ))}
                 </div>
             </div>

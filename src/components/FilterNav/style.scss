@@ -1,0 +1,27 @@
+@import "../../static/styles/index";
+
+.filterNav {
+  margin: $spaceMiddle 0;
+  display: flex;
+  flex-wrap: wrap;
+  &__btn {
+    @include centerContent();
+    background-color: $buttonActive;
+    border-radius: 20px;
+    margin: 0 $spaceSmall $spaceSmall 0;
+    padding: $spaceSmall 7px $spaceSmall;
+    svg {
+      @include dimensions(10px);
+      margin-left: $spaceSmall;
+      fill: $button;
+    }
+
+    &:hover {
+      background-color: $button;
+      cursor: pointer;
+      svg {
+        fill: $buttonHover;
+      }
+    }
+  }
+}

@@ -1,8 +1,7 @@
 @import "../../static/styles/index";
 
 .catalogNav {
-  @extend .container;
-  margin: $spaceLarge 0;
-  display: flex;
-  justify-content: flex-end;
+  &__filter {
+    display: flex;
+  }
 }

@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import data from '../redux/reducer';
+import data from '../redux/dataReducer';
+import filter from '../redux/filterReducer';
 
 // NOTE 1: DO NOT CHANGE the 'reducerMap' name and the declaration pattern.
 // This is used for Rekit cmds to register new features, remove features, etc.
@@ -9,7 +10,8 @@ import data from '../redux/reducer';
 
 const reducerMap = {
   router: routerReducer,
-  data: data
+  data,
+  filter
 };
 
 export default combineReducers(reducerMap);
