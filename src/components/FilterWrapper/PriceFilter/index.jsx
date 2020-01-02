@@ -51,7 +51,7 @@ export class PriceFilter extends Component {
                             value={priceMin != null ? priceMin : ''}
                             />
 
-                        <div className="filter__output">{priceMin} </div>
+                        <div className="filter__output">{priceMin}&euro;</div>
                     </div>
                     <div className="filter__sliderWrapper">
                         <label className="filter__sliderLabel">MAX</label>
@@ -64,7 +64,7 @@ export class PriceFilter extends Component {
                             value={priceMax != null ? priceMax : ''}
                             />
 
-                        <div className="filter__output">{priceMax} </div>
+                        <div className="filter__output">{priceMax}&euro;</div>
                     </div>
                 </div>
             </div>

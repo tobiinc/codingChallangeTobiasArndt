@@ -5,8 +5,8 @@ const dataState = {
     availableSizes: [],
     availableColors: [],
     availablePrice: {
-      min: 3,
-      max: 129
+      min: 0,
+      max: 0
     },
     isPending: false
 };

@@ -1,16 +1,36 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as actions from '../../redux/actions';
 import Isvg from 'react-inlinesvg';
 import iconDelete from '../../static/images/delete.svg';
 import './style.scss';
 
-export default
-class ResetBtn extends Component {
-    static propTypes = {
-        resetFilter: PropTypes.func.isRequired
-    };
+export class ResetBtn extends Component {
 
     render() {
-        return <Isvg className="resetBtn" onClick={this.props.resetFilter} src={iconDelete}/>
+        const {
+            data: {
+                availablePrice
+                },
+            actions: {
+                resetFilter
+                }
+            } = this.props;
+        return <Isvg className="resetBtn" onClick={() => resetFilter(availablePrice)} src={iconDelete}/>
     }
 }
+
+function mapStateToProps(state) {
+    return {
+        data: state.data
+    };
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators({...actions}, dispatch)
+    };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ResetBtn);

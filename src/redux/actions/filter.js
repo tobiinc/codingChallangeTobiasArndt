@@ -35,9 +35,10 @@ export function maxPriceFilter(payload) {
 }
 
 
-export function resetFilter() {
+export function resetFilter(payload) {
     return {
-        type: RESET_FILTER
+        type: RESET_FILTER,
+        payload
     };
 }
 
@@ -79,8 +80,8 @@ export function reducer(state, action) {
             return {
                 sizes: [],
                 colors: [],
-                priceMin: 1,
-                priceMax: 129
+                priceMin: action.payload.min,
+                priceMax: action.payload.max
             };
         default:
             return state;

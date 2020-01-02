@@ -27,7 +27,6 @@
     }
     &__button {
       @include dimensions(20px);
-      @include position(relative, 35px);
       fill: $button;
       display: block;
       &--open {

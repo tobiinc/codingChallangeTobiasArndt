@@ -50,13 +50,13 @@ export class FilterNav extends Component {
                 })}
                 {priceMin !== availablePrice.min && (
                     <span onClick={() => minPriceFilter(availablePrice.min)} className="filterNav__btn">
-                        min price: {priceMin}
+                        min price: {priceMin}&euro;
                         <Isvg src={iconDelete}/>
                     </span>
                 )}
                 {priceMax !== availablePrice.max && (
                     <span onClick={() => maxPriceFilter(availablePrice.max)} className="filterNav__btn">
-                        max price: {priceMax}
+                        max price: {priceMax}&euro;
                         <Isvg src={iconDelete}/>
                     </span>
                 )}
