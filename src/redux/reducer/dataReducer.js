@@ -1,6 +1,6 @@
-import dataState from './initialStates/dataState';
-import { reducer as dataReducer } from './actions/catalog';
-import { reducer as layoutReducer } from './actions/layout';
+import dataState from '../initialStates/dataState';
+import { reducer as dataReducer } from '../actions/catalog';
+import { reducer as layoutReducer } from '../actions/layout';
 
 const reducers = [
   dataReducer,

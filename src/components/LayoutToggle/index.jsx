@@ -22,14 +22,14 @@ class LayoutToggle extends Component {
         return (
             <div className="layoutToggle">
                 <Isvg
-                    className={catalogLayout === 'tile' ? 'layoutToggle__button layoutToggle__button--active' : 'layoutToggle__button'}
-                    onClick={(e) => setCatalogLayout('tile')}
-                    src={iconTile}
-                    />
-                <Isvg
                     className={catalogLayout === 'list' ? 'layoutToggle__button layoutToggle__button--active' : 'layoutToggle__button'}
                     onClick={(e) => setCatalogLayout('list')}
                     src={iconList}
+                    />
+                <Isvg
+                    className={catalogLayout === 'tile' ? 'layoutToggle__button layoutToggle__button--active' : 'layoutToggle__button'}
+                    onClick={(e) => setCatalogLayout('tile')}
+                    src={iconTile}
                     />
             </div>
         )

@@ -2,6 +2,8 @@
 
 .catalog {
   @extend .container;
+  margin-top: $spaceLarge;
+  margin-bottom: $spaceLarge;
   &__wrapper {
     @extend .row;
   }

@@ -1,5 +1,5 @@
-import filterState from './initialStates/filterStates';
-import { reducer as filterReducer } from './actions/filter';
+import filterState from '../initialStates/filterStates';
+import { reducer as filterReducer } from '../actions/filter';
 
 const reducers = [
   filterReducer

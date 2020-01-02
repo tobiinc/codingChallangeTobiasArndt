@@ -6,8 +6,6 @@
   margin: 0 $spaceSmall $spaceSmall 0;
   fill: $button;
   &:hover {
-    svg {
-      fill: $buttonHover;
-    }
+    fill: $buttonHover;
   }
 }
